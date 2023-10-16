@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 class Zate(): # 57.1
     def __init__(self, date):
         self.date = date
@@ -35,7 +35,27 @@ class Zate(): # 57.1
             12: 'Декабрь'}
         return monthNames[self.getMonth()]
 
-zate = Zate("2023-10-11")
+class ZateExt(Zate): # 58.1
+    def addYears(self, years): # 58.2
+        self.date += timedelta(days=years * 365)
+    def subtractYears(self, years): # 58.3
+        self.date -= timedelta(days=years * 365)
+
+    def addMonths(self, months): # 58.4
+        self.date += timedelta(days=months * 31)
+    def subtractMonths(self, months): # 58.5
+        self.date += timedelta(days=months * 31)
+
+    def addDays(self, days): # 58.6
+        self.date += timedelta(days=days)
+    def subtractDays(self, days): # 58.7
+        self.date -= timedelta(days=days)
+
+zate = ZateExt("2023-10-11")
+zate.addYears(15)
+zate.addMonths(1)
+zate.subtractDays(5)
+
 print(zate.getYear())
 print(zate.getMonth())
 print(zate.getDay())
